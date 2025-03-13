@@ -2,7 +2,7 @@ import {SarsClassificationMutations} from '@/components/sarsClassificationMutati
 
 export default function SarsClassificationMutationsPage() {
     return (
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col w-full items-center justify-center">
         <SarsClassificationMutations />
       </div>
     );

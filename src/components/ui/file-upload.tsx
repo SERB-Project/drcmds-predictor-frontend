@@ -52,11 +52,11 @@ export const FileUpload = ({
   });
 
   return (
-    <div className="w-full" {...getRootProps()}>
+    <div className="w-full h-full" {...getRootProps()}>
       <motion.div
         onClick={handleClick}
         whileHover="animate"
-        className="p-6 group/file block rounded-lg cursor-pointer w-full relative overflow-hidden bg-white/50 dark:bg-[rgba(2,31,53,0.05)]"
+        className="h-full p-6 group/file block rounded-lg cursor-pointer w-full relative overflow-hidden bg-white/50 dark:bg-[rgba(2,31,53,0.05)]"
       >
         <input
           ref={fileInputRef}
@@ -65,10 +65,10 @@ export const FileUpload = ({
           onChange={(e) => handleFileChange(Array.from(e.target.files || []))}
           className="hidden"
         />
-        <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,white,transparent)]">
+        <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,white,transparent)] flex items-center justify-center">
           <GridPattern />
         </div>
-        <div className="flex flex-col items-center justify-center">
+        <div className="relative z-20 flex flex-col items-center justify-center h-full">
           <p className="relative z-20 font-sans font-bold text-[rgba(2,31,53,1)] dark:text-gray-200 text-lg">
             Upload FASTA File
           </p>
@@ -152,7 +152,7 @@ export function GridPattern() {
   const columns = 41;
   const rows = 11;
   return (
-    <div className="flex bg-gray-100 dark:bg-neutral-900 shrink-0 flex-wrap justify-center items-center gap-x-px gap-y-px  scale-105">
+    <div className="absolute inset-0 flex bg-gray-100 dark:bg-neutral-900 shrink-0 flex-wrap justify-center items-center gap-x-px gap-y-px scale-105">
       {Array.from({ length: rows }).map((_, row) =>
         Array.from({ length: columns }).map((_, col) => {
           const index = row * columns + col;

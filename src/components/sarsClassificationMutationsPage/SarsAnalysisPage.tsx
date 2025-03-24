@@ -6,28 +6,48 @@ import { Input } from "@/components/ui/input";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { axiosInstance } from "@/lib/api/axios";
+import { useSarsStore } from "@/lib/store/useSarsStore";
 
 export function SarsAnalysisPage() {
   const [files, setFiles] = useState<File[]>([]);
   const [sequenceInput, setSequenceInput] = useState<string>("");
   const [isSampleFileUsed, setIsSampleFileUsed] = useState(false);
+  const { setResults, setActiveTab } = useSarsStore();
 
   const predictMutation = useMutation({
     mutationFn: async (data: FormData | { sequence: string }) => {
       let response;
-      if (files.length > 0) {
-        response = await axiosInstance.post("/predictSarsClassificationMutations", data);
+
+      if (data instanceof FormData) {
+        response = await axiosInstance.post("/predictSarsClassificationMutations/predictFile", data, {
+          headers: {
+              'Content-Type': 'multipart/form-data' 
+          }
+        });
       } else {
-        response = await axiosInstance.post("/predictSarsClassificationMutations", { sequence: sequenceInput });
+        console.log("Sending sequence data:", data);
+        const payload = 'sequence' in data ? data : { sequence: data as unknown as string };
+        response = await axiosInstance.post("/predictSarsClassificationMutations/predictSequence", payload);
       }
+
+      // Check if response exists and has data
+      if (!response || !response.data) {
+        throw new Error("Invalid response from server");
+      }
+
       return response.data;
     },
     onSuccess: (data) => {
       toast.success("Prediction completed successfully!");
-      console.log(data);
+      // Update state after ensuring data exists
+      if (data) {
+        setResults(data);
+        setActiveTab("results");
+      }
     },
     onError: (error: any) => {
-      toast.error(error.response?.data?.message || "Failed to process prediction");
+      toast.error(error.response?.data?.message || error.response?.data?.error || "Failed to process prediction");      
+      console.error("Error details:", error);
     },
   });
 
@@ -63,15 +83,21 @@ export function SarsAnalysisPage() {
       return;
     }
     
-    const formData = new FormData();
     if (files.length > 0) {
+      const formData = new FormData();
       files.forEach((file) => formData.append("file", file));
+  
+      console.log("📂 FormData before sending:");
+      for (const pair of formData.entries()) {
+          console.log(`${pair[0]}:`, pair[1]);
+      }
+  
       predictMutation.mutate(formData);
     } else {
-      predictMutation.mutate({ sequence: sequenceInput });
+      predictMutation.mutate({ sequence: sequenceInput.trim() });
     }
   };
-
+  
   return (
     <div className="max-w-full mx-auto bg-white dark:bg-[rgba(2,31,53,0.8)] shadow-xl rounded-lg border border-[rgba(2,31,53,0.1)] dark:border-[rgba(255,255,255,0.1)]">
       
@@ -142,7 +168,7 @@ export function SarsAnalysisPage() {
                   <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[rgba(2,31,53,0.1)] dark:bg-[rgba(255,255,255,0.1)] flex items-center justify-center">
                     <span className="text-sm font-medium text-[rgba(2,31,53,1)] dark:text-white">2</span>
                   </div>
-                  <p className="text-[rgba(2,31,53,0.8)] dark:text-gray-300">
+                  <p className="text-[rgba(2,31,53,0.8)] text-left dark:text-gray-300">
                     Note: Model is trained on sequences of length 30,255 so the sequence is preprocessed accordingly
                   </p>
                 </div>

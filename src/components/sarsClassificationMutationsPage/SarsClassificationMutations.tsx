@@ -1,10 +1,13 @@
 "use client";
-import React, {useState} from "react";
+import React from "react";
 import { SarsAnalysisPage } from "./SarsAnalysisPage";
 import { SarsModelInfoPage } from "./SarsModelInfoPage";
+import { SarsResultsPage } from "./SarsResultsPage";
+import { useSarsStore } from "@/lib/store/useSarsStore";
 
 export function SarsClassificationMutations() {
-  const [activeTab, setActiveTab] = useState('analysis');
+  const { activeTab, setActiveTab } = useSarsStore();
+  
   return (
     <div className="min-h-screen w-full bg-gray-50 dark:bg-[rgba(2,31,53,0.95)]">
       <div className="w-full px-4 py-8">
@@ -20,39 +23,22 @@ export function SarsClassificationMutations() {
               <div className="bg-[rgba(2,31,53,1)] text-white px-6 py-4 rounded-t-lg flex justify-between items-center">
                 <h2 className="text-xl font-semibold">Sequence Analysis Tool</h2>
                 <div className="flex space-x-4">
-                  {activeTab === 'analysis' ? (
-                    <button 
-                      className="bg-[rgba(255,255,255,0.1)] px-4 py-2 rounded"
-                      onClick={() => setActiveTab('analysis')}
+                  {["analysis", "model Info", "results"].map((tab) => (
+                    <button
+                      key={tab}
+                      className={`px-4 py-2 rounded ${
+                        activeTab === tab ? "bg-[rgba(255,255,255,0.1)]" : "hover:bg-[rgba(255,255,255,0.1)]"
+                      }`}
+                      onClick={() => setActiveTab(tab)}
                     >
-                      Analysis
+                      {tab.charAt(0).toUpperCase() + tab.slice(1)}
                     </button>
-                  ) : (
-                    <button 
-                      className="hover:bg-[rgba(255,255,255,0.1)] px-4 py-2 rounded"
-                      onClick={() => setActiveTab('analysis')}
-                    >
-                      Analysis
-                    </button>
-                  )}
-                  {activeTab === 'modelInfo' ? (
-                    <button 
-                      className="bg-[rgba(255,255,255,0.1)] px-4 py-2 rounded"
-                      onClick={() => setActiveTab('modelInfo')}
-                    >
-                      Model Info
-                    </button>
-                  ) : (
-                    <button 
-                      className="hover:bg-[rgba(255,255,255,0.1)] px-4 py-2 rounded"
-                      onClick={() => setActiveTab('modelInfo')}
-                    >
-                      Model Info
-                    </button>
-                  )}
+                  ))}
                 </div>
               </div>
-              {activeTab === 'analysis' ? <SarsAnalysisPage /> : <SarsModelInfoPage />}
+              {activeTab === "analysis" && <SarsAnalysisPage />}
+              {activeTab === "model Info" && <SarsModelInfoPage />}
+              {activeTab === "results" && <SarsResultsPage />}
             </div>
           </div>
         </div>

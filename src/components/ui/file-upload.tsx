@@ -70,7 +70,7 @@ export const FileUpload = ({
         </div>
         <div className="relative z-20 flex flex-col items-center justify-center h-full">
           <p className="relative z-20 font-sans font-bold text-[rgba(2,31,53,1)] dark:text-gray-200 text-lg">
-            Upload FASTA File
+            Upload File
           </p>
           <p className="relative z-20 font-sans font-normal text-[rgba(2,31,53,0.8)] dark:text-gray-300 text-sm mt-2">
             Drag and drop your file here or click to browse

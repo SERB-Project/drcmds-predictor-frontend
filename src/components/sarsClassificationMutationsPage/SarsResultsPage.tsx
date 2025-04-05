@@ -150,6 +150,7 @@ export function SarsResultsPage() {
             </div>
           ) : (
             <div className="overflow-x-auto">
+              {/* Codon Mutations Table */}
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="bg-[rgba(2,31,53,1)] text-white">
@@ -157,6 +158,7 @@ export function SarsResultsPage() {
                     <th className="px-4 py-3 text-center">Reference Codon</th>
                     <th className="px-4 py-3 text-center">Mutated Codon</th>
                     <th className="px-4 py-3 text-center">Change</th>
+                    <th className="px-4 py-3 text-center">Mutation Type</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -164,6 +166,7 @@ export function SarsResultsPage() {
                     Codon_Position: number;
                     Reference_Codon: string;
                     Mutated_Codon: string;
+                    Mutation_Type: string;
                   }, index: number) => (
                     <tr 
                       key={index}
@@ -188,6 +191,19 @@ export function SarsResultsPage() {
                       </td>
                       <td className="px-4 py-3 text-[rgba(2,31,53,0.8)] dark:text-gray-300 text-center font-mono">
                         {mutation.Reference_Codon} → {mutation.Mutated_Codon}
+                      </td>
+                      <td className="px-4 py-3 text-center">
+                        <span className={`px-2 py-1 rounded font-medium ${
+                          mutation.Mutation_Type === 'Nonsense' 
+                            ? 'bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200'
+                            : mutation.Mutation_Type === 'Missense'
+                            ? 'bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200'
+                            : mutation.Mutation_Type === 'Silent'
+                            ? 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200'
+                            : 'bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200'
+                        }`}>
+                          {mutation.Mutation_Type}
+                        </span>
                       </td>
                     </tr>
                   ))}

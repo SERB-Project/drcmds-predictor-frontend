@@ -103,6 +103,7 @@ export default {
     },
   },
   plugins: [
+    require('@tailwindcss/aspect-ratio'),
     require("tailwindcss-animate"),
     addVariablesForColors,
     function ({ matchUtilities, theme }: any) {

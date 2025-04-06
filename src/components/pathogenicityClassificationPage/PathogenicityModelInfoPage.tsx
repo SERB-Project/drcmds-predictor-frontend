@@ -12,13 +12,13 @@ export function PathogenicityModelInfoPage() {
             <div className="bg-[rgba(2,31,53,0.03)] flex-1 dark:bg-[rgba(255,255,255,0.05)] p-6 rounded-lg border border-[rgba(2,31,53,0.1)] dark:border-[rgba(255,255,255,0.1)] flex flex-col">
               <div className="flex-1 flex flex-col justify-center">
                 <img 
-                  src="/model_architecture.png" 
+                  src="/patogenic_model_architecture.png" 
                   alt="Model Architecture"
                   className="w-full object-contain max-h-[400px] rounded-lg shadow-md"
                 />
               </div>
               <p className="text-sm text-[rgba(2,31,53,0.6)] dark:text-gray-400 mt-4 text-center">
-                Figure 1: Deep Learning Model Architecture for MECP2 SNV Pathogenicity Classification
+                Figure 1: Architecture for MECP2 SNV Pathogenicity Classification
               </p>
             </div>
           </div>
@@ -36,7 +36,7 @@ export function PathogenicityModelInfoPage() {
               </div>
               <div className="flex-1 flex items-center">
                 <p className="text-[rgba(2,31,53,0.8)] text-left dark:text-gray-300 leading-relaxed">
-                  The deep learning model for MECP2 SNV pathogenicity classification is based on a Convolutional Neural Network (CNN) optimized for genomic sequence data. The model processes one-hot encoded nucleotide sequences as input and extracts hierarchical features using three 1D convolutional layers with ReLU activation, followed by max-pooling layers to reduce dimensionality. A dropout mechanism is incorporated after each convolutional block to mitigate overfitting. The extracted feature maps are flattened and passed through two fully connected layers (FC layers) with 72 and 32 neurons, respectively, leading to a final softmax output layer for binary classification of SNV pathogenicity (Benign or Pathogenic). The model was trained using a cross-entropy loss function and optimized with Adam, achieving a high test accuracy of 98.10%, demonstrating its effectiveness in pathogenicity classification.
+                In this model, XGBoost algorithm was used to classify MECP2 gene mutations based on extracted genomic features. Categorical variables were one-hot encoded, clinical labels were binarized, and continuous features were normalized using Min-Max scaling. The dataset was then split into training and testing sets. Key hyperparameters like tree depth and learning rate were optimized using grid search. XGBoost’s ensemble learning approach helped reduce overfitting and improve generalization. Through iterative boosting and careful tuning, the model effectively distinguished pathogenic from benign mutations. The final model demonstrated strong performance, highlighting the potential of tree-based methods in genomic variant classification.
                 </p>
               </div>
             </div>

@@ -27,9 +27,9 @@ const HeroSection = ({ title, tagline }: HeroSectionProps) => {
   }, [title]);
 
   return (
-    <section className="bg-white h-screen flex flex-col items-center justify-center">
+    <section className="bg-white py-5 h-45vh flex flex-col items-center justify-center">
       <h1 className="text-6xl font-bold text-[#123265]">{currentText}</h1>
-      <p className="text-2xl mt-4 w-1/2 text-center text-[#123265]">{tagline}</p>
+      <p className="text-xl mt-4 w-9/12 text-center text-[#123265]">{tagline}</p>
     </section>
   );
 };

@@ -30,9 +30,9 @@ export function SarsModelInfoPage() {
             <div className="bg-[rgba(2,31,53,0.03)] flex-1 dark:bg-[rgba(255,255,255,0.05)] p-6 rounded-lg border border-[rgba(2,31,53,0.1)] dark:border-[rgba(255,255,255,0.1)] flex flex-col">
               <div className="flex items-center gap-3 mb-4">
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[rgba(2,31,53,0.1)] dark:bg-[rgba(255,255,255,0.1)] flex items-center justify-center">
-                  <span className="text-sm font-medium text-[rgba(2,31,53,1)] dark:text-white">01</span>
+                  <span className="text-sm font-medium text-[#123265] dark:text-white">01</span>
                 </div>
-                <h2 className="text-xl font-semibold text-[rgba(2,31,53,1)] dark:text-white">
+                <h2 className="text-xl font-semibold text-[#123265] dark:text-white">
                   Model Classification
                 </h2>
               </div>
@@ -51,9 +51,9 @@ export function SarsModelInfoPage() {
           <div className="bg-[rgba(2,31,53,0.03)] dark:bg-[rgba(255,255,255,0.05)] p-6 rounded-lg border border-[rgba(2,31,53,0.1)] dark:border-[rgba(255,255,255,0.1)]">
             <div className="flex items-center gap-3 mb-4">
               <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[rgba(2,31,53,0.1)] dark:bg-[rgba(255,255,255,0.1)] flex items-center justify-center">
-                <span className="text-sm font-medium text-[rgba(2,31,53,1)] dark:text-white">02</span>
+                <span className="text-sm font-medium text-[#123265] dark:text-white">02</span>
               </div>
-              <h2 className="text-xl font-semibold text-[rgba(2,31,53,1)] dark:text-white">
+              <h2 className="text-xl font-semibold text-[#123265] dark:text-white">
                 Explainability and Insights
               </h2>
             </div>

@@ -12,7 +12,7 @@ export function SarsClassificationMutations() {
     <div className="min-h-screen w-full bg-gray-50 dark:bg-[rgba(2,31,53,0.95)]">
       <div className="w-full px-4 py-8">
         <div className="text-center mb-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-[rgba(2,31,53,1)] dark:text-white mb-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-[#123265] dark:text-white mb-4">
             SARS-CoV2 Variant Analysis Portal
           </h1>
           <p className="text-lg md:text-xl text-[rgba(2,31,53,0.8)] dark:text-gray-300">
@@ -20,7 +20,7 @@ export function SarsClassificationMutations() {
           </p>
           <div className="min-h-screen w-full bg-gray-50 dark:bg-[rgba(2,31,53,0.95)]">
             <div className="max-w-full mx-auto px-4 py-8">
-              <div className="bg-[rgba(2,31,53,1)] text-white px-6 py-4 rounded-t-lg flex justify-between items-center">
+              <div className="bg-[#123265] text-white px-6 py-4 rounded-t-lg flex justify-between items-center">
                 <h2 className="text-xl font-semibold">Sequence Analysis Tool</h2>
                 <div className="flex space-x-4">
                   {["analysis", "model Info", "results"].map((tab) => (

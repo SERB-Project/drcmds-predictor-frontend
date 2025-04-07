@@ -24,7 +24,7 @@ export function SarsResultsPage() {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center p-8 bg-white dark:bg-[rgba(2,31,53,0.8)] rounded-lg border-2 border-[rgba(2,31,53,0.1)] dark:border-[rgba(255,255,255,0.1)]">
         <div className="text-center max-w-2xl">
-          <h2 className="text-2xl font-bold text-[rgba(2,31,53,1)] dark:text-white mb-4">
+          <h2 className="text-2xl font-bold text-[#123265] dark:text-white mb-4">
             No Analysis Results Available
           </h2>
           <div className="bg-[rgba(2,31,53,0.05)] dark:bg-[rgba(255,255,255,0.05)] p-6 rounded-lg mb-6">
@@ -33,22 +33,22 @@ export function SarsResultsPage() {
             </p>
             <ol className="text-left space-y-3 text-[rgba(2,31,53,0.7)] dark:text-gray-400">
               <li className="flex items-start gap-2">
-                <span className="font-semibold text-[rgba(2,31,53,1)] dark:text-white">1.</span>
+                <span className="font-semibold text-[#123265] dark:text-white">1.</span>
                 Navigate to the Analysis section
               </li>
               <li className="flex items-start gap-2">
-                <span className="font-semibold text-[rgba(2,31,53,1)] dark:text-white">2.</span>
+                <span className="font-semibold text-[#123265] dark:text-white">2.</span>
                 Upload a FASTA file or input your sequence
               </li>
               <li className="flex items-start gap-2">
-                <span className="font-semibold text-[rgba(2,31,53,1)] dark:text-white">3.</span>
+                <span className="font-semibold text-[#123265] dark:text-white">3.</span>
                 Submit for analysis
               </li>
             </ol>
           </div>
           <Button
             onClick={() => setActiveTab("analysis")}
-            className="bg-[rgba(2,31,53,1)] hover:bg-[rgba(2,31,53,0.9)] text-white px-6 py-2 rounded"
+            className="bg-[#123265] hover:bg-[rgba(2,31,53,0.9)] text-white px-6 py-2 rounded"
           >
             Go to Analysis Section
           </Button>
@@ -60,7 +60,7 @@ export function SarsResultsPage() {
   return (
     <div className="p-8 bg-white dark:bg-[rgba(2,31,53,0.8)] rounded-lg border-2 border-[rgba(2,31,53,0.1)] dark:border-[rgba(255,255,255,0.1)]">
       <div className="mb-8 text-left">
-        <h2 className="text-2xl font-bold text-[rgba(2,31,53,1)] dark:text-white mb-2">
+        <h2 className="text-2xl font-bold text-[#123265] dark:text-white mb-2">
           SARS-CoV-2 Analysis Results
         </h2>
         <p className="text-[rgba(2,31,53,0.7)] dark:text-gray-400">
@@ -69,11 +69,11 @@ export function SarsResultsPage() {
       </div>
 
       {/* Variant Information */}
-      <div className="mb-8 p-6 bg-[rgba(2,31,53,0.05)] dark:bg-[rgba(2,31,53,0.3)] rounded-lg border-l-4 border-[rgba(2,31,53,1)]">
-        <h3 className="text-xl font-semibold text-[rgba(2,31,53,1)] dark:text-white mb-2 text-left">
+      <div className="mb-8 p-6 bg-[rgba(2,31,53,0.05)] dark:bg-[rgba(2,31,53,0.3)] rounded-lg border-l-4 border-[#123265]">
+        <h3 className="text-xl font-semibold text-[#123265] dark:text-white mb-2 text-left">
           Identified Variant
         </h3>
-        <p className="text-3xl font-bold text-[rgba(2,31,53,0.8)] dark:text-gray-200 text-left">
+        <p className="text-3xl font-bold text-[#123265] dark:text-gray-200 text-left">
           {getVariantDisplayName(results.variant)}
         </p>
       </div>
@@ -86,7 +86,7 @@ export function SarsResultsPage() {
             onClick={() => setMutationTab('nucleotide')}
             className={`px-4 py-2 text-lg font-medium border-b-2 transition-colors ${
               mutationTab === 'nucleotide'
-                ? 'border-[rgba(2,31,53,1)] text-[rgba(2,31,53,1)] dark:border-white dark:text-white'
+                ? 'border-[#123265] text-[#123265] dark:border-white dark:text-white'
                 : 'border-transparent text-[rgba(2,31,53,0.6)] dark:text-gray-400 hover:text-[rgba(2,31,53,0.8)] dark:hover:text-gray-300'
             }`}
           >
@@ -96,7 +96,7 @@ export function SarsResultsPage() {
             onClick={() => setMutationTab('codon')}
             className={`px-4 py-2 text-lg font-medium border-b-2 transition-colors ${
               mutationTab === 'codon'
-                ? 'border-[rgba(2,31,53,1)] text-[rgba(2,31,53,1)] dark:border-white dark:text-white'
+                ? 'border-[#123265] text-[#123265] dark:border-white dark:text-white'
                 : 'border-transparent text-[rgba(2,31,53,0.6)] dark:text-gray-400 hover:text-[rgba(2,31,53,0.8)] dark:hover:text-gray-300'
             }`}
           >
@@ -110,7 +110,7 @@ export function SarsResultsPage() {
             <div className="overflow-x-auto">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="bg-[rgba(2,31,53,1)] text-white">
+                  <tr className="bg-[#123265] text-white">
                     <th className="px-4 py-3 text-center">Position</th>
                     <th className="px-4 py-3 text-center">Reference</th>
                     <th className="px-4 py-3 text-center">Mutation</th>
@@ -153,7 +153,7 @@ export function SarsResultsPage() {
               {/* Codon Mutations Table */}
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="bg-[rgba(2,31,53,1)] text-white">
+                  <tr className="bg-[#123265] text-white">
                     <th className="px-4 py-3 text-center">Position</th>
                     <th className="px-4 py-3 text-center">Reference Codon</th>
                     <th className="px-4 py-3 text-center">Mutated Codon</th>

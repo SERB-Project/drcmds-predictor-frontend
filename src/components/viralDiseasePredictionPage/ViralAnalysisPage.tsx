@@ -7,6 +7,7 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { axiosInstance } from "@/lib/api/axios";
 import { useViralStore } from "@/lib/store/useViralStore";
+import { ApiError } from "@/lib/api/types";
 
 export function ViralAnalysisPage() {
   const [files, setFiles] = useState<File[]>([]);
@@ -40,8 +41,11 @@ export function ViralAnalysisPage() {
         setResults(data);
       }
     },
-    onError: (error: any) => {
-      toast.error(error.response?.data?.message || error.response?.data?.error || "Failed to process prediction");      
+    onError: (error: ApiError) => {
+      toast.error(
+        error.message || 
+        "Failed to process prediction"
+      );      
       console.error("Error details:", error);
     },
   });
@@ -56,7 +60,7 @@ export function ViralAnalysisPage() {
       const response = await fetch("/viralSample.csv");
       const text = await response.text();
       setSequenceInput(text);
-    } catch (error) {
+    } catch (_error) {
       toast.error("Failed to load sample sequence.");
     }
   };

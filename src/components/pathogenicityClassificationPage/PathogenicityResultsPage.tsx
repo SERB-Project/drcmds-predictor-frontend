@@ -108,7 +108,7 @@ export function PathogenicityResultsPage() {
         {/* Summary Box */}
         <div className="bg-[rgba(2,31,53,0.02)] dark:bg-[rgba(2,31,53,0.2)] p-4 rounded-lg border border-[rgba(2,31,53,0.1)] dark:border-[rgba(255,255,255,0.1)]">
           <p className="text-[rgba(2,31,53,0.7)] dark:text-gray-400 text-sm">
-            <strong>Note:</strong> This analysis provides a prediction of the variant's pathogenicity based on its molecular characteristics and location within the MECP2 gene.
+            <strong>Note:</strong> This analysis provides a prediction of the variant&apos;s pathogenicity based on its molecular characteristics and location within the MECP2 gene.
           </p>
         </div>
       </div>

@@ -6,6 +6,7 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { axiosInstance } from "@/lib/api/axios";
 import { usePathogenicityStore } from "@/lib/store/usePathogenicityStore";
+import { ApiError } from "@/lib/api/types";
 
 export function PathogenicityAnalysisPage() {
   const [spdiInput, setSpdiInput] = useState<string>("");
@@ -34,8 +35,11 @@ export function PathogenicityAnalysisPage() {
         setActiveTab("results");
       }
     },
-    onError: (error: any) => {
-      toast.error(error.response?.data?.message || error.response?.data?.error || "Failed to process prediction");      
+    onError: (error: ApiError) => {
+      toast.error(
+        error.message || 
+        "Failed to process prediction"
+      );      
       console.error("Error details:", error);
     },
   });

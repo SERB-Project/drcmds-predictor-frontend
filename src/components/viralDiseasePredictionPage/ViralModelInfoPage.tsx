@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 
 
 export function ViralModelInfoPage() {
@@ -39,7 +39,7 @@ export function ViralModelInfoPage() {
               <div className="flex-1 flex items-center">
                 <p className="text-[rgba(2,31,53,0.8)] text-left dark:text-gray-300 leading-relaxed">
                   This model is designed to accurately classify viral diseases using a deep neural network (DNN) architecture. The primary objective is to develop an explainable DNN that not only provides high accuracy but also offers insights into its decision-making process. Here, a customized DNN architecture is optimized for both accuracy and explainability. The model incorporates techniques such as attention mechanisms and saliency maps to enhance interpretability. By analyzing viral genome sequences, the model aims to understand disease mechanisms, transmission, and develop effective treatments. This approach is crucial in addressing the complexities of viral disease classification due to diverse viral genomes and mutations. 
-                  The model's performance is evaluated using diverse viral disease datasets, which include sequences from viruses like HIV, Ebola, SARS, MERS, and COVID-19. These datasets are processed using techniques such as one-hot encoding for nucleotide sequences and label encoding for disease names. For instance, nucleotides are encoded as follows: A =, T =, C =, G =, and N =. This encoding allows the model to numerically process the genetic information. The model's architecture is tailored to extract meaningful features from these encoded sequences, facilitating accurate classification.
+                  The model&apos;s performance is evaluated using diverse viral disease datasets, which include sequences from viruses like HIV, Ebola, SARS, MERS, and COVID-19. These datasets are processed using techniques such as one-hot encoding for nucleotide sequences and label encoding for disease names. For instance, nucleotides are encoded as follows: A =, T =, C =, G =, and N =. This encoding allows the model to numerically process the genetic information. The model&apos;s architecture is tailored to extract meaningful features from these encoded sequences, facilitating accurate classification.
                 </p>
               </div>
             </div>
@@ -56,7 +56,7 @@ export function ViralModelInfoPage() {
               </h2>
             </div>
             <p className="text-[rgba(2,31,53,0.8)] text-left dark:text-gray-300 leading-relaxed">
-              Explainability is a critical component of this model, as it enhances trust and provides valuable insights into how specific genomic sequences influence the model's decisions. Here, techniques such as attention mechanisms and saliency maps are used to make the model more interpretable. Attention mechanisms help focus on specific parts of the input data that are most relevant to the classification task, while saliency maps visually highlight the important genomic regions involved in the decision-making process. For example, gradient-based methods like Grad-CAM are employed to generate these maps, offering a clear visualization of which nucleotide sequences are driving the predictions.
+              Explainability is a critical component of this model, as it enhances trust and provides valuable insights into how specific genomic sequences influence the model&apos;s decisions. Here, techniques such as attention mechanisms and saliency maps are used to make the model more interpretable. Attention mechanisms help focus on specific parts of the input data that are most relevant to the classification task, while saliency maps visually highlight the important genomic regions involved in the decision-making process. For example, gradient-based methods like Grad-CAM are employed to generate these maps, offering a clear visualization of which nucleotide sequences are driving the predictions.
             </p>
           </div>
         </div>

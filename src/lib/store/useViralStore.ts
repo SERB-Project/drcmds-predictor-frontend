@@ -1,8 +1,18 @@
 import { create } from "zustand";
 
+interface ViralResult {
+  disease_name: string;
+  probability: number;
+  mutated_patterns: Array<{
+    pattern: string;
+    position: number;
+    significance: string;
+  }>;
+}
+
 interface ViralStore {
-  results: any | null; 
-  setResults: (data: any) => void;
+  results: ViralResult | null; 
+  setResults: (data: ViralResult) => void;
   activeTab: string;
   setActiveTab: (tab: string) => void;
 }

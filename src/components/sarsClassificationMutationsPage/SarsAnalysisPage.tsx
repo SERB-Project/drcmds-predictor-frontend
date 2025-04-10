@@ -66,7 +66,7 @@ export function SarsAnalysisPage() {
       const response = await fetch("/sample_sequence.fasta");
       const text = await response.text();
       setSequenceInput(text);
-    } catch (error) {
+    } catch (_error) {
       toast.error("Failed to load sample sequence.");
     }
   };

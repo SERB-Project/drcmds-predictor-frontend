@@ -7,7 +7,9 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { axiosInstance } from "@/lib/api/axios";
 import { useSarsStore } from "@/lib/store/useSarsStore";
+import { ApiError } from "@/lib/api/types";
 
+// Remove custom ApiError type definition and use the imported one
 export function SarsAnalysisPage() {
   const [files, setFiles] = useState<File[]>([]);
   const [sequenceInput, setSequenceInput] = useState<string>("");
@@ -45,8 +47,11 @@ export function SarsAnalysisPage() {
         setActiveTab("results");
       }
     },
-    onError: (error: any) => {
-      toast.error(error.response?.data?.message || error.response?.data?.error || "Failed to process prediction");      
+    onError: (error: ApiError) => {
+      toast.error(
+        error.message || 
+        "Failed to process prediction"
+      );      
       console.error("Error details:", error);
     },
   });

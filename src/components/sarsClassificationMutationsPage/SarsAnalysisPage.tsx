@@ -67,6 +67,7 @@ export function SarsAnalysisPage() {
       const text = await response.text();
       setSequenceInput(text);
     } catch (_error) {
+      console.error(_error);
       toast.error("Failed to load sample sequence.");
     }
   };

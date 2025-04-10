@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSarsStore } from "@/lib/store/useSarsStore";
+import { useSarsStore, type SarsResult, type NucleotideMutation, type CodonMutation } from "@/lib/store/useSarsStore";
 import { Button } from "@/components/ui/button";
 
 // Add variant mapping
@@ -12,7 +12,9 @@ const variantMapping: { [key: string]: string } = {
 };
 
 export function SarsResultsPage() {
-  const { results, setActiveTab } = useSarsStore();
+  const results = useSarsStore((state) => state.results) as SarsResult | null;
+  const setActiveTab = useSarsStore((state) => state.setActiveTab);
+
   const [mutationTab, setMutationTab] = useState('nucleotide');  // Add this line
 
   // Function to get display name for variant
@@ -72,7 +74,7 @@ export function SarsResultsPage() {
       <div className="mb-8 p-6 bg-[rgba(2,31,53,0.05)] dark:bg-[rgba(2,31,53,0.3)] rounded-lg border-l-4 border-[#123265]">
         <h3 className="text-xl font-semibold text-[#123265] dark:text-white mb-2 text-left">
           Identified Variant
-        </h3>
+        </h3>\
         <p className="text-3xl font-bold text-[#123265] dark:text-gray-200 text-left">
           {getVariantDisplayName(results.variant)}
         </p>
@@ -118,7 +120,7 @@ export function SarsResultsPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {results.mutations.map((mutation: { Position: number; Reference: string; Mutated: string }, index: number) => (
+                  {results.mutations.map((mutation: NucleotideMutation, index: number) => (
                     <tr 
                       key={index}
                       className={`
@@ -150,7 +152,6 @@ export function SarsResultsPage() {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              {/* Codon Mutations Table */}
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="bg-[#123265] text-white">
@@ -162,12 +163,7 @@ export function SarsResultsPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {results.codon_wise_mutations.map((mutation: {
-                    Codon_Position: number;
-                    Reference_Codon: string;
-                    Mutated_Codon: string;
-                    Mutation_Type: string;
-                  }, index: number) => (
+                  {results.codon_wise_mutations.map((mutation: CodonMutation, index: number) => (
                     <tr 
                       key={index}
                       className={`

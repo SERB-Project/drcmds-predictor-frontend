@@ -1,19 +1,27 @@
 import { create } from "zustand";
 
-interface SarsResult {
-  prediction: string;
-  spdi: string;
-  consequences: string[];
-  mutations: Array<{
-    position: number;
-    reference: string;
-    variant: string;
-  }>;
+export interface NucleotideMutation {
+  Position: number;
+  Reference: string;
+  Mutated: string;
+}
+
+export interface CodonMutation {
+  Codon_Position: number;
+  Reference_Codon: string;
+  Mutated_Codon: string;
+  Mutation_Type: string;
+}
+
+export interface SarsResult {
+  variant: string;
+  mutations: NucleotideMutation[];
+  codon_wise_mutations: CodonMutation[];
 }
 
 interface SarsStore {
-  results: SarsResult | null; // Store API results
-  setResults: (data: SarsResult) => void; // Function to update results
+  results: SarsResult | null;
+  setResults: (data: SarsResult) => void;
   activeTab: string;
   setActiveTab: (tab: string) => void;
 }

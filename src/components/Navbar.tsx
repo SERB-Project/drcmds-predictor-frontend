@@ -29,11 +29,23 @@ const Navbar = () => {
               </button>
               <div className="absolute left-0 mt-1 w-48 bg-[#123265] border border-gray-200 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                 <div className="py-1">
+                  <Link href="/sarsClassificationMutations" className="block px-4 py-2 text-base font-normal text-white hover:bg-[#1a2f6f]">
+                    SARS-CoV-2 Classification
+                  </Link>
                   <Link href="/pathogenicityClassification" className="block px-4 py-2 text-base font-normal text-white hover:bg-[#1a2f6f]">
                     Pathogenicity Classification
                   </Link>
-                  <Link href="/sarsClassificationMutations" className="block px-4 py-2 text-base font-normal text-white hover:bg-[#1a2f6f]">
-                    SARS-CoV-2 Classification
+                  <Link href="/viralDiseasePrediction" className="block px-4 py-2 text-base font-normal text-white hover:bg-[#1a2f6f]">
+                    Viral Disease Prediction
+                  </Link>
+                  <Link href="/spliceSitePrediction" className="block px-4 py-2 text-base font-normal text-white hover:bg-[#1a2f6f]">
+                    Splice Site Prediction
+                  </Link>
+                  <Link href="/" className="block px-4 py-2 text-base font-normal text-white hover:bg-[#1a2f6f]">
+                    model 5
+                  </Link>
+                  <Link href="/" className="block px-4 py-2 text-base font-normal text-white hover:bg-[#1a2f6f]">
+                    Model 6
                   </Link>
                 </div>
               </div>

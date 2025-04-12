@@ -101,14 +101,14 @@ export function ViralAnalysisPage() {
           {/* Left Section: Upload */}
           <div className="lg:col-span-2">
             <div className="bg-[rgba(2,31,53,0.03)] dark:bg-[rgba(255,255,255,0.05)] p-6 rounded-lg border border-[rgba(2,31,53,0.1)] dark:border-[rgba(255,255,255,0.1)] h-[calc(100vh-12.5rem)]">
-              <h3 className="text-lg text-left font-semibold text-[rgba(2,31,53,1)] dark:text-white mb-4">
+              <h3 className="text-lg text-left font-semibold text-[#123265] dark:text-white mb-4">
                 Upload Sequence File
               </h3>
               <div className="border-2 border-dashed border-[rgba(2,31,53,0.2)] dark:border-[rgba(255,255,255,0.2)] rounded-lg bg-gray-50 dark:bg-[rgba(2,31,53,0.3)] transition-all hover:border-[rgba(2,31,53,0.4)] h-[calc(100%-4rem)]">
                 <FileUpload onChange={handleFileUpload} />
               </div>
               {isSampleFileUsed && (
-                <p className="text-sm text-[rgba(2,31,53,0.6)] dark:text-gray-400 mt-2">Using sample sequence file.</p>
+                <p className="text-sm text-[#123265] dark:text-gray-400 mt-2">Using sample sequence file.</p>
               )}
             </div>
           </div>
@@ -117,7 +117,7 @@ export function ViralAnalysisPage() {
           <div className="lg:col-span-3 space-y-6">
             {/* Sequence Input */}
             <div className="bg-[rgba(2,31,53,0.03)] dark:bg-[rgba(255,255,255,0.05)] p-6 rounded-lg border border-[rgba(2,31,53,0.1)] dark:border-[rgba(255,255,255,0.1)]">
-              <h3 className="text-lg text-left font-semibold text-[rgba(2,31,53,1)] dark:text-white mb-4">
+              <h3 className="text-lg text-left font-semibold text-[#123265] dark:text-white mb-4">
                 Input Sequence
               </h3>
               <Input
@@ -128,34 +128,34 @@ export function ViralAnalysisPage() {
                 className="min-h-[120px] resize-none bg-white dark:bg-[rgba(2,31,53,0.2)] border-[rgba(2,31,53,0.2)]"
               />
               <div className="flex flex-wrap gap-3 mt-4">
-                <Button onClick={handleSampleTextInput} className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white">
+                <Button onClick={handleSampleTextInput} className="bg-gray-200 hover:bg-[#123265] hover:text-white dark:bg-gray-700 text-gray-800 dark:text-white">
                   Use Sample Sequence
                 </Button>
-                <Button onClick={handleSampleFileDownload} className="bg-blue-600 hover:bg-blue-700 text-white">
+                <Button onClick={handleSampleFileDownload} className="bg-[#123265] hover:[#123265] text-white">
                   Download Sample Sequence File
                 </Button>
               </div>
             </div>
             {/* Guidelines */}
             <div className="bg-[rgba(2,31,53,0.03)] dark:bg-[rgba(255,255,255,0.05)] p-6 rounded-lg border border-[rgba(2,31,53,0.1)] dark:border-[rgba(255,255,255,0.1)]">
-              <h3 className="text-lg text-left font-semibold text-[rgba(2,31,53,1)] dark:text-white mb-4">
+              <h3 className="text-lg text-left font-semibold text-[#123265] dark:text-white mb-4">
                 Guidelines
               </h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[rgba(2,31,53,0.1)] dark:bg-[rgba(255,255,255,0.1)] flex items-center justify-center">
-                    <span className="text-sm font-medium text-[rgba(2,31,53,1)] dark:text-white">1</span>
+                    <span className="text-sm font-medium text-[#123265] dark:text-white">1</span>
                   </div>
-                  <p className="text-[rgba(2,31,53,0.8)] dark:text-gray-300">
+                  <p className="text-[#123265] dark:text-gray-300">
                     Upload a DNA sequence file(csv format) or enter sequence text
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
                   <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[rgba(2,31,53,0.1)] dark:bg-[rgba(255,255,255,0.1)] flex items-center justify-center">
-                    <span className="text-sm font-medium text-[rgba(2,31,53,1)] dark:text-white">2</span>
+                    <span className="text-sm font-medium text-[#123265] dark:text-white">2</span>
                   </div>
-                  <p className="text-[rgba(2,31,53,0.8)] text-left dark:text-gray-300">
-                    xyz
+                  <p className="text-[#123265] text-left dark:text-gray-300">
+                    The sequence should be in FASTA format.
                   </p>
                 </div>
               </div>
@@ -163,7 +163,7 @@ export function ViralAnalysisPage() {
             {/* Submit Button */}
             <Button 
               onClick={handlePredict} 
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-all disabled:bg-gray-400"
+              className="w-full bg-[#123265] hover:[#123265] text-white rounded-md transition-all disabled:bg-gray-400"
               disabled={predictMutation.isPending || (!files.length && !sequenceInput)}
             >
               {predictMutation.isPending ? "Processing Request..." : "Submit for Analysis"}
@@ -172,7 +172,7 @@ export function ViralAnalysisPage() {
             {/* Results Section */}
 {results && (
   <div className="mt-6 bg-[rgba(2,31,53,0.03)] dark:bg-[rgba(255,255,255,0.05)] p-6 rounded-lg border border-gray-300 dark:border-gray-600">
-    <h3 className="text-lg font-semibold text-[rgba(2,31,53,1)] dark:text-white mb-4">
+    <h3 className="text-lg font-semibold text-[#123265] dark:text-white mb-4">
       Prediction Results
     </h3>
     <div className="space-y-4">

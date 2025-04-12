@@ -1,14 +1,18 @@
 import { create } from 'zustand';
 
+interface PredictionResult {
+  [key: string]: string | number | Array<string | number | Record<string, unknown>>; // Adjust based on actual structure
+}
+
 interface SpliceState {
-  results: any;
+  results: PredictionResult | null; // Replace `any` with `PredictionResult | null`
   modelType: "donor" | "acceptor";
   sequenceInput: string;
   files: File[];
   isSampleFileUsed: boolean;
   activeTab: string;
   setActiveTab: (tab: string) => void;
-  setResults: (results: any) => void;
+  setResults: (results: PredictionResult | null) => void; // Replace `any` with `PredictionResult | null`
   setModelType: (type: "donor" | "acceptor") => void;
   setSequenceInput: (input: string) => void;
   setFiles: (files: File[]) => void;

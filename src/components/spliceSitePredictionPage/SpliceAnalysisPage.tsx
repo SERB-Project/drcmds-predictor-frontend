@@ -6,6 +6,7 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { axiosInstance } from "@/lib/api/axios";
 import { useSpliceStore } from "@/lib/store/useSpliceStore";
+import { AxiosError } from "axios";
 
 export function SpliceAnalysisPage() {
   const {
@@ -19,13 +20,12 @@ export function SpliceAnalysisPage() {
     setSequenceInput,
     setFiles,
     setIsSampleFileUsed,
-    activeTab,
-    setActiveTab
   } = useSpliceStore();
+
   const predictMutation = useMutation({
     mutationFn: async (data: FormData | { sequence: string }) => {
       let response;
-
+  
       if (data instanceof FormData) {
         response = await axiosInstance.post(
           `/spliceSitePrediction/${modelType}/predictFile`,
@@ -42,11 +42,11 @@ export function SpliceAnalysisPage() {
           payload
         );
       }
-
+  
       if (!response || !response.data) {
         throw new Error("Invalid response from server");
       }
-
+  
       return response.data;
     },
     onSuccess: (data) => {
@@ -55,10 +55,10 @@ export function SpliceAnalysisPage() {
         setResults(data);
       }
     },
-    onError: (error: any) => {
+    onError: (error: AxiosError) => { // Specify AxiosError type
       toast.error(
-        error.response?.data?.message ||
-          error.response?.data?.error ||
+        (error.response?.data as { message?: string })?.message ||
+          (error.response?.data as { error?: string })?.error ||
           "Failed to process prediction"
       );
       console.error("Error details:", error);
@@ -77,6 +77,7 @@ export function SpliceAnalysisPage() {
       setSequenceInput(text);
     } catch (error) {
       toast.error("Failed to load sample sequence.");
+      console.log(error);
     }
   };
 

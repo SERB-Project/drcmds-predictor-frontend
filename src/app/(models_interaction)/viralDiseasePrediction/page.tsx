@@ -1,7 +1,7 @@
 import { ViralDiseasePrediction } from '@/components/viralDiseasePredictionPage/ViralDiseasePrediction';
 import Navbar from '@/components/Navbar';
 
-export default function SarsClassificationMutationsPage() {
+export default function ViralDiseasePredictionPage() {
     return (
       <>
         <Navbar/>

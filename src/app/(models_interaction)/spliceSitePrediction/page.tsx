@@ -1,7 +1,7 @@
 import { SpliceSitePrediction } from "@/components/spliceSitePredictionPage/SpliceSitePrediction";
 import Navbar from '@/components/Navbar';
 
-export default function SarsClassificationMutationsPage() {
+export default function spliceSitePredictionPage() {
     return (
       <>
         <Navbar />

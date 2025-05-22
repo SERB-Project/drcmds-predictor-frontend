@@ -41,8 +41,8 @@ const Navbar = () => {
                   <Link href="/spliceSitePrediction" className="block px-4 py-2 text-base font-normal text-white hover:bg-[#1a2f6f]">
                     Splice Site Prediction
                   </Link>
-                  <Link href="/" className="block px-4 py-2 text-base font-normal text-white hover:bg-[#1a2f6f]">
-                    model 5
+                  <Link href="/drugTargetPairsAnalysis" className="block px-4 py-2 text-base font-normal text-white hover:bg-[#1a2f6f]">
+                    Drug Target Pairs Analysis
                   </Link>
                   <Link href="/" className="block px-4 py-2 text-base font-normal text-white hover:bg-[#1a2f6f]">
                     Model 6

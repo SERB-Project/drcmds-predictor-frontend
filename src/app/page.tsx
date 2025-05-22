@@ -44,10 +44,10 @@ const Home = () => {
               linkUrl="/spliceSitePrediction"
             />
             <Card
-              title="Model 5: coming soon"
-              description="Classification of SARS-CoV2 variants and mutation prediction."
-              imageUrl="/Coronavirus._SARS-CoV-2.png"
-              linkUrl="http://localhost:3000/sarsClassificationMutations"
+              title="Drug Target Pairs Analysis"
+              description="This model is designed to identify drug-target pairs that are likely to be effective in treating a given disease."
+              imageUrl="/Drug_target.jpg"
+              linkUrl="/drugTargetPairsAnalysis"
             />
             <Card
               title="Model 6: coming soon"

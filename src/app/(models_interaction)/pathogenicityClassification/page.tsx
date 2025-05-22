@@ -1,7 +1,7 @@
 import { PathogenicClassification } from "@/components/pathogenicityClassificationPage/PathogenicClasiification";
 import Navbar from "@/components/Navbar";
 
-export default function SarsClassificationMutationsPage() {
+export default function PathogenicityClassificationPage() {
     return (
       <>
         <Navbar />

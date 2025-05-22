@@ -4,7 +4,7 @@ export async function POST(req: NextRequest) {
     try {
         const data = await req.json();
 
-        if (!data.compound || !data.sequence) {
+        if (!data.compound_smiles || !data.target_sequence) {
             return NextResponse.json(
                 { error: "Missing required fields: compound and sequence" }, 
                 { status: 400 }
@@ -12,10 +12,10 @@ export async function POST(req: NextRequest) {
         }
 
         const formattedData = {
-            compound: data.compound,
-            sequence: data.sequence // Transform to match backend expectation
+            compound_smiles: data.compound_smiles,
+            target_sequence: data.target_sequence // Transform to match backend expectation
         };
-        const backendEndpoint = `${process.env.SERVER_URL}/api/pathogenicity/predictPathogenicity`;
+        const backendEndpoint = `${process.env.SERVER_URL}/api/drug-target/predictDrugTargetAffinity`;
 
         const response = await fetch(backendEndpoint, {
             method: "POST",

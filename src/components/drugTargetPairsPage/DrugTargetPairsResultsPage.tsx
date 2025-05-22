@@ -1,9 +1,9 @@
 import React from "react";
-import { usePathogenicityStore } from "@/lib/store/usePathogenicityStore";
+import { useDrugTargetStore } from "@/lib/store/useDrugTargetStore";
 import { Button } from "@/components/ui/button";
 
 export function DrugTargetPairsResultsPage() {
-  const { results, setActiveTab } = usePathogenicityStore();
+  const { results, setActiveTab } = useDrugTargetStore();
 
   if (!results) {
     return (
@@ -46,69 +46,42 @@ export function DrugTargetPairsResultsPage() {
     <div className="p-8 bg-white dark:bg-[#123265] rounded-lg border-2 border-[rgba(2,31,53,0.1)] dark:border-[rgba(255,255,255,0.1)]">
       <div className="mb-8 text-left">
         <h2 className="text-2xl font-bold text-[#123265] dark:text-white mb-2">
-          MECP2 SNV Pathogenicity Analysis Results
+          Drug-Target Pair Analysis Results
         </h2>
         <p className="text-[rgba(2,31,53,0.7)] dark:text-gray-400">
           Analysis completed successfully. Please review the detailed findings below.
         </p>
       </div>
 
-      {/* Prediction Result */}
+      {/* Affinity Score */}
       <div className="mb-8 p-6 bg-[rgba(2,31,53,0.05)] dark:bg-[rgba(2,31,53,0.3)] rounded-lg border-l-4 border-[#123265]">
         <h3 className="text-xl font-semibold text-[#123265] dark:text-white mb-2 text-left">
-          Pathogenicity Prediction
+          Binding Affinity Score
         </h3>
-        <p className={`text-3xl font-bold text-left ${
-          results.prediction === 'Benign' 
-            ? 'text-green-600 dark:text-green-400'
-            : results.prediction === 'Pathogenic'
-            ? 'text-red-600 dark:text-red-400'
-            : 'text-yellow-600 dark:text-yellow-400'
-        }`}>
-          {results.prediction}
+        <p className="text-3xl font-bold text-[#123265] dark:text-white">
+          {results.affinity}
         </p>
       </div>
 
-      {/* Variant Details */}
+      {/* Explanation Graph */}
       <div className="space-y-4">
         <div className="bg-[rgba(2,31,53,0.05)] dark:bg-[rgba(2,31,53,0.3)] rounded-lg p-6">
           <h3 className="text-xl font-semibold text-[#123265] dark:text-white mb-4 text-left">
-            Variant Details
+            Interaction Graph
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* SPDI Information */}
-            <div className="bg-white dark:bg-[rgba(2,31,53,0.2)] p-4 rounded-lg">
-              <h4 className="text-sm font-medium text-[#123265] dark:text-gray-400 mb-2">
-                Canonical SPDI
-              </h4>
-              <p className="text-lg font-mono text-[#123265] dark:text-white">
-                {results.spdi}
-              </p>
-            </div>
-
-            {/* Consequences */}
-            <div className="bg-white dark:bg-[rgba(2,31,53,0.2)] p-4 rounded-lg">
-              <h4 className="text-sm font-medium text-[#123265] dark:text-gray-400 mb-2">
-                Molecular Consequences
-              </h4>
-              <div className="space-y-2">
-                {results.consequences.map((consequence: string, index: number) => (
-                  <span 
-                    key={index}
-                    className="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm"
-                  >
-                    {consequence}
-                  </span>
-                ))}
-              </div>
-            </div>
+          <div className="bg-white dark:bg-[rgba(2,31,53,0.2)] p-4 rounded-lg">
+            <img 
+              src={`data:image/png;base64,${results.explanation_graph}`}
+              alt="Drug-Target Interaction Graph"
+              className="w-full h-auto rounded-lg"
+            />
           </div>
         </div>
 
         {/* Summary Box */}
         <div className="bg-[rgba(2,31,53,0.02)] dark:bg-[rgba(2,31,53,0.2)] p-4 rounded-lg border border-[rgba(2,31,53,0.1)] dark:border-[rgba(255,255,255,0.1)]">
           <p className="text-[rgba(2,31,53,0.7)] dark:text-gray-400 text-sm">
-            <strong>Note:</strong> This analysis provides a prediction of the variant&apos;s pathogenicity based on its molecular characteristics and location within the MECP2 gene.
+            <strong>Note:</strong> The graph above visualizes the predicted interactions between the drug and target molecules. Lower affinity scores indicate stronger binding.
           </p>
         </div>
       </div>

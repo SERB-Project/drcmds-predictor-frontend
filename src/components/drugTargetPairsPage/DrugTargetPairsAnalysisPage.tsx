@@ -5,22 +5,22 @@ import { Input } from "@/components/ui/input";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 import { axiosInstance } from "@/lib/api/axios";
-import { usePathogenicityStore } from "@/lib/store/usePathogenicityStore";
 import { ApiError } from "@/lib/api/types";
+import { useDrugTargetStore } from "@/lib/store/useDrugTargetStore";
 
 export function DrugTargetPairsAnalysisPage() {
   const [compoundInput, setCompoundInput] = useState<string>("");
   const [sequenceInput, setSequenceInput] = useState<string>("");
-  const { setResults, setActiveTab } = usePathogenicityStore();
+  const { setResults, setActiveTab } = useDrugTargetStore();
 
   const analyseDrugTargetPairs = useMutation({
-    mutationFn: async (data: { compound: string; sequence: string[] }) => {
+    mutationFn: async (data: { compound_smiles: string; target_sequence: string }) => {
       const formattedData = {
-        compound: data.compound,
-        sequence: data.sequence // Changed from consequences to consequence
+        compound_smiles: data.compound_smiles,
+        target_sequence: data.target_sequence // Changed from consequences to consequence
       };
 
-      const response = await axiosInstance.post("/drugTargetPairsAnalysis", formattedData);
+      const response = await axiosInstance.post("/drugTargetPairAnalysis", formattedData);
       
       if (!response || !response.data) {
         throw new Error("Invalid response from server");
@@ -56,8 +56,8 @@ export function DrugTargetPairsAnalysisPage() {
     }
     
     const data = {
-      compound: compoundInput.trim(),
-      sequence: [sequenceInput.trim()]
+      compound_smiles: compoundInput.trim(),
+      target_sequence: sequenceInput.trim()
     };
 
     analyseDrugTargetPairs.mutate(data);

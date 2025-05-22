@@ -3,10 +3,10 @@ import React from "react";
 import { DrugTargetPairsAnalysisPage } from "@/components/drugTargetPairsPage/DrugTargetPairsAnalysisPage"; 
 import { DrugTargetPairsModelInfoPage } from "@/components/drugTargetPairsPage/DrugTargetPairsModelInfoPage";
 import { DrugTargetPairsResultsPage } from "@/components/drugTargetPairsPage/DrugTargetPairsResultsPage";
-import { usePathogenicityStore } from "@/lib/store/usePathogenicityStore";
+import { useDrugTargetStore } from "@/lib/store/useDrugTargetStore";
 
 export function DrugTargetPairsPrediction() {
-  const { activeTab, setActiveTab } = usePathogenicityStore();
+  const { activeTab, setActiveTab } = useDrugTargetStore();
   
   return (
     <div className="min-h-screen w-full bg-gray-50 dark:bg-[#123265]">
